@@ -1,0 +1,1103 @@
+<DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iberdrola - Cumplimiento ENS Nivel ALTO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Light Trail Effect Canvas -->
+  <canvas id="light-canvas"></canvas>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400&display=swap');
+
+    /* === Light Trail Cursor Effect === */
+    #light-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    :root {
+      --primary: #0056b3;
+      --secondary: #003366;
+      --accent: #e63946;
+      --light: #f8f9fa;
+      --dark: #0f172a;
+      --gray: #94a3b8;
+      --card-bg: rgba(10, 15, 30, 0.75);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --nav-bg: rgba(10, 15, 30, 0.95);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #e2e8f0;
+      line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background video container */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .video-bg video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    /* Overlay for better readability */
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(12, 20, 39, 0.6);
+      backdrop-filter: blur(2px);
+    }
+
+    /* === NEW NAVIGATION STYLES === */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 9999;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .logo i {
+      color: #60a5fa;
+    }
+
+    /* Menu Container */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    /* Main Menu Items */
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 0;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-item:hover .nav-link {
+      color: #60a5fa;
+    }
+
+    .nav-link i {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-item:hover .nav-link i {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px;
+      min-width: 240px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      backdrop-filter: blur(15px);
+      list-style: none;
+    }
+
+    /* Triangle indicator for dropdown */
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0; 
+      height: 0; 
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid rgba(255,255,255,0.1);
+    }
+
+    /* Show Dropdown on Hover */
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Dropdown Links */
+    .dropdown-menu li {
+      margin-bottom: 0;
+    }
+
+    .dropdown-link {
+      display: block;
+      padding: 10px 15px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-link:hover {
+      background: rgba(96, 165, 250, 0.15);
+      color: #ffffff;
+      padding-left: 20px; /* Slight movement effect */
+    }
+
+    /* === EXISTING STYLES === */
+    /* Scroll-to-top button */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #back-to-top:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    header {
+      text-align: center;
+      padding: 6rem 1.5rem 3rem; /* Increased top padding for fixed nav */
+      position: relative;
+      z-index: 2;
+      background: rgba(10, 15, 30, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-image {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #60a5fa, #3b82f6, #1d4ed8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #cbd5e1;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2.2rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      scroll-margin-top: 100px; /* Fix for anchor jumps */
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: white;
+    }
+
+    .card h2 i {
+      background: rgba(0, 86, 179, 0.25);
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #60a5fa;
+      font-size: 1.2rem;
+    }
+
+    .card h3 {
+      margin: 1.3rem 0 0.9rem;
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    ul, ol {
+      padding-left: 1.8rem;
+      margin: 1.2rem 0;
+    }
+
+    li {
+      margin-bottom: 0.7rem;
+      color: #cbd5e1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.8rem 0;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      padding: 13px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    th {
+      background: rgba(0, 51, 102, 0.4);
+      color: #bfdbfe;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    tr:hover {
+      background: rgba(0, 86, 179, 0.1);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+      margin: 2.2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.8rem;
+      padding-left: 16px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #0a0f1e;
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+
+    .timeline-date {
+      font-weight: 700;
+      color: #60a5fa;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem 3rem;
+      background: rgba(10, 15, 30, 0.7);
+      color: #94a3b8;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
+
+    /* PDF Preview Styles */
+    .pdf-preview {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 800px;
+      margin: 1.5rem auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .pdf-preview:hover img {
+      filter: blur(3px) brightness(0.7);
+    }
+
+    .pdf-preview:hover .pdf-overlay {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 10;
+    }
+
+    .pdf-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 15, 30, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .pdf-button {
+      background: var(--primary);
+      color: white;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 86, 179, 0.4);
+      transition: background 0.2s ease, transform 0.2s ease;
+      z-index: 20;
+    }
+
+    .pdf-button:hover {
+      background: #1d4ed8;
+      transform: scale(1.03);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9em;
+      color: #fff;
+      text-align: center;
+      white-space: nowrap;
+      border: 2px solid transparent;
+    }
+
+    .badge-low { border-color: #4CAF50; color: #4CAF50; background: rgba(76, 175, 80, 0.1); }
+    .badge-medium { border-color: #DED80B; color: #DED80B; background: rgba(222, 216, 11, 0.1); }
+    .badge-high { border-color: #F78207; color: #F78207; background: rgba(247, 130, 7, 0.1); }
+    .badge-very-high { border-color: #B01010; color: #ff6b6b; background: rgba(176, 16, 16, 0.1); }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1rem;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .nav-menu {
+            flex-direction: column;
+            width: 100%;
+            gap: 0;
+            margin-top: 1rem;
+            align-items: flex-start;
+        }
+
+        .nav-item {
+            width: 100%;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-link {
+            justify-content: space-between;
+            padding: 15px 0;
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: none;
+            width: 100%;
+            opacity: 1;
+            visibility: visible;
+            background: rgba(255,255,255,0.03);
+            box-shadow: none;
+            padding: 0 0 10px 0;
+            display: none; /* Hide by default on mobile */
+            border: none;
+        }
+        
+        /* On mobile, we use a simple hover or focus simulation for expanding */
+        .nav-item:hover .dropdown-menu {
+            display: block;
+            transform: none;
+        }
+
+        .dropdown-link {
+            padding-left: 25px;
+            font-size: 0.85rem;
+        }
+        
+        .dropdown-menu::before {
+            display: none;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background video -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://static.videezy.com/system/resources/previews/000/049/334/original/abstract-beam-light.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Reorganized Navigation (Hierarchical) -->
+  <nav>
+    <a href="index.html" class="logo">
+      <i class="fas fa-bolt"></i>
+      Iberdrola ENS
+    </a>
+    
+    <ul class="nav-menu">
+      
+      <!-- Sector 1: Contexto -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Contexto y Normativa <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
+          <li><a href="#conducta" class="dropdown-link">Código de Conducta</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 2: Ciclo ENS -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Ciclo ENS (Guías) <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#auditoria" class="dropdown-link">Auditoría (802)</a></li>
+          <li><a href="#implantacion" class="dropdown-link">Implantación (804)</a></li>
+          <li><a href="#verificacion" class="dropdown-link">Verificación (808)</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 3: Riesgos -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Gestión de Riesgos <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#mapa_riesgos" class="dropdown-link">Mapa de Riesgos</a></li>
+          <li><a href="#terceras-partes" class="dropdown-link">Terceras Partes</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 4: Anexos -->
+      <li class="nav-item">
+        <a href="#anexos" class="nav-link">
+          Anexos
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- Scroll to top button -->
+  <a href="#inicio" id="back-to-top" title="Volver al inicio">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <header id="inicio">
+    <div class="hero-image">
+      <img src="https://media.istockphoto.com/id/1969568700/es/foto/electricity-pilon.jpg?s=612x612&w=0&k=20&c=skp1xV_2nsmW98ZzqIHPP-pyzvTw7iqP_d9-0rQgJXI=" alt="Torre de alta tensión - Infraestructura energética crítica de Iberdrola">
+    </div>
+    <h1><i class="fas fa-shield-alt"></i> Iberdrola - Cumplimiento ENS Nivel ALTO</h1>
+    <p>Ciberseguridad para Entidades Esenciales: cumplimiento del ENS (Nivel ALTO), NIS2 y Guías CCN-STIC en infraestructuras críticas eléctricas.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Introducción -->
+    <!-- Entorno regulatorio aplicable -->
+    <div class="card" id="entorno_regulatorio">
+      <h2><i class="fas fa-gavel"></i> Entorno regulatorio aplicable</h2>
+      <p>Iberdrola, S.A., como operador del sector energético incluido en el <strong>Anexo I de la Directiva NIS2 (UE 2022/2555)</strong>, se clasifica como <strong>Entidad Esencial</strong>. Sus sistemas SCADA/OT están categorizados en <strong>nivel ALTO</strong> del <strong>Esquema Nacional de Seguridad (ENS)</strong>, regulado por el <strong>Real Decreto 311/2022</strong>, lo que exige auditorías bienales y cumplimiento reforzado.</p>
+
+      <h3>Normativa general</h3>
+      <ul>
+        <li><strong>RD 311/2022 (ENS):</strong> Marco base para la seguridad de sistemas de información en entidades esenciales.</li>
+        <li><strong>Guías CCN-STIC 802/804/808:</strong> Estándares técnicos para auditoría, implantación y verificación del cumplimiento.</li>
+        <li><strong>RGPD + LOPDGDD:</strong> Aplicables al tratamiento de datos personales en sistemas OT/IT.</li>
+        <li><strong>Ley 9/2014 (Telecomunicaciones):</strong> Exige seguridad en redes de comunicación críticas para la telemetría.</li>
+      </ul>
+
+      <h3>Normativa sectorial</h3>
+      <ul>
+        <li><strong>Directiva NIS2 (UE 2022/2555):</strong> Obligaciones reforzadas de ciberseguridad y notificación de incidentes para el sector eléctrico.</li>
+        <li><strong>Ley 8/2011 + RD 903/2023 (PIC):</strong> Protección integral de infraestructuras críticas, vinculando seguridad física y lógica.</li>
+        <li><strong>RD 1955/2000:</strong> Garantiza continuidad del suministro eléctrico, condicionada a la ciberseguridad de sistemas OT.</li>
+        <li><strong>RD 43/2021:</strong> Mantiene vigencia transitoria en gestión y notificación de ciberincidentes hasta entrada en vigor de la nueva Ley de Ciberseguridad.</li>
+      </ul>
+    </div>
+
+    <!-- Guía CCN-STIC 802 -->
+    <div class="card" id="auditoria">
+      <h2><i class="fas fa-search"></i> Guía CCN-STIC 802: Auditoría del cumplimiento</h2>
+      <p>Realizada por entidad certificadora acreditada por ENAC. Incluye:</p>
+      <ol>
+        <li><strong>Revisión de documentación:</strong> PSI, DA y Perfil de Cumplimiento Específico (PCE).</li>
+        <li><strong>Entrevista al RSI:</strong> Confirmación de aprobación del análisis de riesgos y formación de dirección.</li>
+        <li><strong>Pruebas técnicas:</strong> Verificación de MFA en accesos privilegiados y principio de mínimo privilegio.</li>
+        <li><strong>Comprobación de trazabilidad:</strong> Revisión del SIEM (registros seguros y conservados).</li>
+        <li><strong>Validación del plan de gestión de incidentes:</strong> Procedimiento de notificación al CSIRT nacional (CCN-CERT).</li>
+      </ol>
+      <p>Resultado: Dictamen favorable con observaciones menores y Plan de Acciones Correctivas (PAC).</p>
+    </div>
+
+    <!-- Guía CCN-STIC 804 -->
+    <div class="card" id="implantacion">
+      <h2><i class="fas fa-tools"></i> Guía CCN-STIC 804: Implantación de medidas de seguridad</h2>
+      <p>Acciones clave para sistemas nivel ALTO:</p>
+      <ul>
+        <li><strong>Políticas y documentación formal:</strong> PSI y PCE adaptado al entorno real.</li>
+        <li><strong>Control de accesos:</strong> MFA obligatorio y principio de mínimo privilegio.</li>
+        <li><strong>Protección de integridad:</strong> Firma electrónica cualificada y criptografía autorizada por el CCN.</li>
+        <li><strong>Gestión de incidentes:</strong> Procedimiento claro y notificación al CCN-CERT si es necesario.</li>
+        <li><strong>Trazabilidad:</strong> Logs centralizados (SIEM), protegidos, sincronizados y conservados ≥90 días.</li>
+        <li><strong>Responsables designados:</strong> RSI y roles específicos para ejecución diaria.</li>
+      </ul>
+    </div>
+
+    <!-- Guía CCN-STIC 808 -->
+    <div class="card" id="verificacion">
+      <h2><i class="fas fa-check-circle"></i> Guía CCN-STIC 808: Verificación del cumplimiento</h2>
+      <p>Métodos y criterios para demostrar que las medidas funcionan:</p>
+      <ol>
+        <li><strong>Verificación documental:</strong> PCE y acta de asunción de riesgo residual firmada por dirección.</li>
+        <li><strong>Pruebas de controles de acceso:</strong> Intentos reales sin MFA y revisión de configuraciones.</li>
+        <li><strong>Revisión de trazabilidad:</strong> Configuración del SIEM (protección, sincronización NTP, retención ≥90 días).</li>
+        <li><strong>Simulacros de incidentes:</strong> Ej. ransomware en subestación – detección ≤15 min, contención ≤60 min.</li>
+        <li><strong>Criterios cuantificables:</strong>
+          <ul>
+            <li>100% cuentas privilegiadas con MFA.</li>
+            <li>100% eventos críticos registrados.</li>
+            <li>Retención de logs ≥90 días.</li>
+          </ul>
+        </li>
+      </ol>
+      <p>Evidencias almacenadas en repositorio centralizado con MFA y hashes criptográficos.</p>
+    </div>
+
+    <!-- Relación con terceras partes -->
+    <div class="card" id="terceras-partes">
+      <h2><i class="fas fa-handshake"></i> Relación con terceras partes</h2>
+
+      <h3>¿Quiénes son las terceras partes?</h3>
+      <ul>
+        <li>Proveedores tecnológicos (software SCADA, cloud, ciberseguridad).</li>
+        <li>Subcontratistas operativos (mantenimiento en subestaciones, gestión de red).</li>
+        <li>Auditores y consultoras externas.</li>
+        <li>Organismos de respuesta (CCN-CERT).</li>
+      </ul>
+
+      <h3>Proceso de due diligence</h3>
+      <ul>
+        <li><strong>Evaluación previa:</strong> Certificaciones (ISO 27001, ENS), prácticas de ciberseguridad, cláusulas contractuales.</li>
+        <li><strong>Seguimiento continuo:</strong> Reevaluación anual, auditorías periódicas, supervisión regulatoria, uso del PCE como referencia.</li>
+      </ul>
+
+      <h3>Herramienta: ServiceNow GRC</h3>
+      <p>Plataforma para gestión de riesgos y cumplimiento que permite:</p>
+      <ul>
+        <li>Centralizar información de proveedores (certificaciones, contactos, contratos).</li>
+        <li>Alertas automáticas por vencimientos o incumplimientos de SLAs.</li>
+        <li>Facilitar auditorías con trazabilidad digital.</li>
+        <li>Integración con SIEM y CMDB para vincular proveedores a activos críticos.</li>
+      </ul>
+      <p><strong>Configuración mínima:</strong> Nombre legal, tipo de relación, criticidad, certificaciones, POC de seguridad, evaluación de riesgo, SLAs (notificación ≤24h, respuesta a vulnerabilidades ≤72h).</p>
+    </div>
+
+    <!-- Anexos -->
+    <div class="card" id="anexos">
+      <h2><i class="fa-solid fa-book"></i> Anexos</h2>
+      
+      <h3>Anexo A: Matriz RACI – Asignación de responsabilidades</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Actividad</th>
+            <th>Responsable</th>
+            <th>Aprobador</th>
+            <th>Consultado</th>
+            <th>Informado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Elaboración de la PSI</td>
+            <td>RSI</td>
+            <td>Órgano de Dirección</td>
+            <td>CSIRT, DPO</td>
+            <td>Comité de Ciberseguridad</td>
+          </tr>
+          <tr>
+            <td>Análisis y tratamiento de riesgos</td>
+            <td>RSI + Equipo de Riesgos</td>
+            <td>Órgano de Dirección</td>
+            <td>Consultora externa</td>
+            <td>CSIRT, Auditor Interno</td>
+          </tr>
+          <tr>
+            <td>Implantación de MFA</td>
+            <td>Administrador de Sistemas</td>
+            <td>RSI</td>
+            <td>Proveedor de identidad</td>
+            <td>CSIRT, Auditor Interno</td>
+          </tr>
+          <tr>
+            <td>Configuración del SIEM (≥90 días)</td>
+            <td>Administrador de Sistemas</td>
+            <td>RSI</td>
+            <td>Proveedor de SIEM</td>
+            <td>CSIRT, Auditor Interno</td>
+          </tr>
+          <tr>
+            <td>Plan de Gestión de Incidentes</td>
+            <td>CSIRT Interno</td>
+            <td>RSI</td>
+            <td>CCN-CERT</td>
+            <td>Órgano de Dirección, Proveedores críticos</td>
+          </tr>
+          <tr>
+            <td>Ejecución de simulacro</td>
+            <td>CSIRT Interno</td>
+            <td>RSI</td>
+            <td>Proveedores OT/IT</td>
+            <td>Órgano de Dirección, INCIBE-CERT</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Anexo B: Plantilla de verificación cuantitativa – Guía CCN-STIC 808</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Elemento verificado</th>
+            <th>Criterio exigido</th>
+            <th>Método de verificación</th>
+            <th>Evidencia obtenida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MFA en accesos privilegiados</td>
+            <td>100% con MFA activo</td>
+            <td>Revisión + prueba de acceso sin MFA</td>
+            <td>Captura con hash SHA-256</td>
+          </tr>
+          <tr>
+            <td>Cobertura de eventos críticos</td>
+            <td>100% registrados</td>
+            <td>Comparación catálogo vs SIEM</td>
+            <td>Informe de cobertura</td>
+          </tr>
+          <tr>
+            <td>Ventana de retención de logs</td>
+            <td>≥90 días</td>
+            <td>Consulta política + validación</td>
+            <td>Acta firmada</td>
+          </tr>
+          <tr>
+            <td>Simulacro de incidente</td>
+            <td>Detección ≤15 min<br>Contención ≤60 min</td>
+            <td>Ejecución controlada</td>
+            <td>Informe con cronograma</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Anexo C: Plan temporal de certificación ENS – Nivel ALTO</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">15 nov 2025</div>
+          <div><strong>Fase 1: Preparación</strong> – Aprobación del PCE por Órgano de Dirección.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">30 ene 2026</div>
+          <div><strong>Fase 2: Implementación</strong> – Cierre de brechas (MFA, logs ≥90 días).</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">10–14 mar 2026</div>
+          <div><strong>Fase 3: Auditoría</strong> – Revisión documental y pruebas técnicas por Bureau Veritas.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">15 abr 2026</div>
+          <div><strong>Fase 4: Emisión certificado</strong> – Certificado ENS con sello ENAC.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Cada 6 y 24 meses</div>
+          <div><strong>Fase 5: Mantenimiento</strong> – Auditorías semestrales y renovación bianual (próxima: abr 2028).</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" id="conducta">
+      <h2><i class="fa-solid fa-book"></i> Código de Conducta</h2>
+    <div class="pdf-preview">
+      <a href="https://www.iberdrola.com/documents/20125/42199/codigo-conducta-proveedor-folleto.pdf" target="_blank">
+        <!-- Reemplaza src con una imagen real o un placeholder adecuado -->
+        <img src="foto_conducta.png" alt="Código de Conducta de Proveedores - Iberdrola" style="width:100%;">
+        <div class="pdf-overlay">
+          <button 
+            onclick="window.open('https://www.iberdrola.com/documents/20125/42199/codigo-conducta-proveedor-folleto.pdf', '_blank')"
+            class="pdf-button"
+          >
+            <i class="fas fa-file-pdf"></i> Ir al PDF
+          </button>
+        </div>
+      </a>
+    </div>
+    </div>
+
+    <!-- MAPA DE RIESGO -->
+    <div class="card" id="mapa_riesgos">
+      <h2><i class="fa-solid fa-map"></i> Mapa de Riesgos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Proceso</th>
+            <th>Riesgo</th>
+            <th>Probabilidad</th>
+            <th>Impacto del Riesgo</th>
+            <th>Categoría de Riesgo</th>
+            <th>Medidas Mitigadoras</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gestión de accesos a sistemas SCADA</td>
+            <td>Acceso no autorizado por credenciales comprometidas o falta de MFA.</td>
+            <td style="text-align: center;"><span class="badge badge-low">Baja</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td>MFA obligatorio en accesos privilegiados, mínimo privilegio, monitoreo con SIEM y formación en ciberseguridad OT.</td>
+          </tr>
+          <tr>
+            <td>Gestión de proveedores tecnológicos</td>
+            <td>Brecha en un proveedor compromete la infraestructura crítica (ej. software SCADA).</td>
+            <td style="text-align: center;"><span class="badge badge-low">Baja</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td>Evaluación previa de seguridad, cláusulas contractuales estrictas, seguimiento con ServiceNow GRC y simulacros con proveedores clave.</td>
+          </tr>
+          <tr>
+            <td>Gestión de continuidad y crisis</td>
+            <td>Paro prolongado de servicios esenciales por ransomware o desastres.</td>
+            <td style="text-align: center;"><span class="badge badge-medium">Media</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td>Elaborar BIA y BCP, realizar simulacros periódicos y aplicar la regla 3-2-1 en copias de seguridad.</td>
+          </tr>
+          <tr>
+            <td>Gestión de vulnerabilidades y mantenimiento</td>
+            <td>Explotación de vulnerabilidades no parcheadas en sistemas IT/OT.</td>
+            <td style="text-align: center;"><span class="badge badge-high">Alta</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td>Escaneos periódicos, parcheo priorizado con pruebas previas y retirada de software/hardware obsoleto.</td>
+          </tr>
+          <tr>
+            <td>Segmentación de red y arquitectura</td>
+            <td>Movimiento lateral desde la red corporativa (IT) a la red industrial (OT).</td>
+            <td style="text-align: center;"><span class="badge badge-medium">Media</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td>Segmentación con VLANs/DMZ, controles estrictos entre zonas, canales aislados para administración y monitoreo de accesos no autorizados.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <footer>
+    <p>© 2025 Iberdrola, S.A. – Cumplimiento con el Esquema Nacional de Seguridad (ENS) y Directiva NIS2</p>
+    <p>Documento interno – Uso exclusivo para fines de auditoría y certificación</p>
+  </footer>
+
+  <script>
+    // Show/hide back-to-top button
+    window.addEventListener('scroll', function() {
+      const button = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        button.classList.add('show');
+      } else {
+        button.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          // Obtener altura del nav (estática en escritorio, pero manejamos ambos casos)
+          const nav = document.querySelector('nav');
+          const navHeight = nav ? nav.offsetHeight : 0;
+          const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+          const scrollTarget = offsetTop - navHeight - 10; // margen adicional de 10px
+
+          window.scrollTo({
+            top: scrollTarget,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+  <script>
+    // Solo activar en dispositivos con ratón (no en móviles/táctiles)
+    if (!('ontouchstart' in window)) {
+      const canvas = document.getElementById('light-canvas');
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      const points = [];
+      const maxPoints = 10; // Estela corta
+      let idleTimer;
+
+      // Colores que combinan con tu paleta corporativa
+      const trailColor = '#60a5fa'; // Azul claro de tu diseño (de los enlaces)
+      const glowColor = '#3b82f6';  // Azul más intenso (degradado del título)
+
+      document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Reiniciar temporizador: si no hay movimiento en 120ms, limpiar
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          points.length = 0;
+        }, 120);
+
+        points.push({ x, y });
+        if (points.length > maxPoints) points.shift();
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (points.length < 2) {
+          requestAnimationFrame(animate);
+          return;
+        }
+
+        // Dibujar estela suave
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) {
+          ctx.lineTo(points[i].x, points[i].y);
+        }
+
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, trailColor);
+        gradient.addColorStop(1, glowColor);
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = glowColor;
+        ctx.stroke();
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iberdrola - Cumplimiento ENS Nivel ALTO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Light Trail Effect Canvas -->
+  <canvas id="light-canvas"></canvas>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background video -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://static.videezy.com/system/resources/previews/000/049/334/original/abstract-beam-light.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Reorganized Navigation (Hierarchical) -->
+  <nav>
+    <a href="index.html" class="logo">
+      <i class="fas fa-bolt"></i>
+      Iberdrola ENS
+    </a>
+    
+    <ul class="nav-menu">
+      
+      <!-- Sector 1: Contexto -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Contexto y Normativa <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="contexto_normativa.html#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
+          <li><a href="contexto_normativa.html#conducta" class="dropdown-link">Código de Conducta</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 2: Ciclo ENS -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Ciclo ENS (Guías) <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="guias_ENS.html#auditoria" class="dropdown-link">Auditoría (802)</a></li>
+          <li><a href="guias_ENS.html#implantacion" class="dropdown-link">Implantación (804)</a></li>
+          <li><a href="guias_ENS.html#verificacion" class="dropdown-link">Verificación (808)</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 3: Riesgos -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Gestión de Riesgos <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="gestion_riesgo.html#terceras-partes" class="dropdown-link">Terceras Partes</a></li>
+          <li><a href="gestion_riesgo.html#mapa_riesgos" class="dropdown-link">Mapa de Riesgos</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 4: Anexos -->
+      <li class="nav-item">
+        <a href="anexos.html#anexos" class="nav-link">Anexos</a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- Scroll to top button -->
+  <a href="#inicio" id="back-to-top" title="Volver al inicio">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <header id="inicio"></header>
+
+  <div class="container">
+
+    <!-- Guía CCN-STIC 802 -->
+    <div class="card" id="auditoria">
+      <h2><i class="fas fa-search"></i> Guía CCN-STIC 802: Auditoría del cumplimiento</h2>
+      <p>Realizada por entidad certificadora acreditada por ENAC. Incluye:</p>
+      <ol>
+        <li><strong>Revisión de documentación:</strong> PSI, DA y Perfil de Cumplimiento Específico (PCE).</li>
+        <li><strong>Entrevista al RSI:</strong> Confirmación de aprobación del análisis de riesgos y formación de dirección.</li>
+        <li><strong>Pruebas técnicas:</strong> Verificación de MFA en accesos privilegiados y principio de mínimo privilegio.</li>
+        <li><strong>Comprobación de trazabilidad:</strong> Revisión del SIEM (registros seguros y conservados).</li>
+        <li><strong>Validación del plan de gestión de incidentes:</strong> Procedimiento de notificación al CSIRT nacional (CCN-CERT).</li>
+      </ol>
+      <p>Resultado: Dictamen favorable con observaciones menores y Plan de Acciones Correctivas (PAC).</p>
+    </div>
+
+    <!-- Guía CCN-STIC 804 -->
+    <div class="card" id="implantacion">
+      <h2><i class="fas fa-tools"></i> Guía CCN-STIC 804: Implantación de medidas de seguridad</h2>
+      <p>Acciones clave para sistemas nivel ALTO:</p>
+      <ul>
+        <li><strong>Políticas y documentación formal:</strong> PSI y PCE adaptado al entorno real.</li>
+        <li><strong>Control de accesos:</strong> MFA obligatorio y principio de mínimo privilegio.</li>
+        <li><strong>Protección de integridad:</strong> Firma electrónica cualificada y criptografía autorizada por el CCN.</li>
+        <li><strong>Gestión de incidentes:</strong> Procedimiento claro y notificación al CCN-CERT si es necesario.</li>
+        <li><strong>Trazabilidad:</strong> Logs centralizados (SIEM), protegidos, sincronizados y conservados ≥90 días.</li>
+        <li><strong>Responsables designados:</strong> RSI y roles específicos para ejecución diaria.</li>
+      </ul>
+    </div>
+
+    <!-- Guía CCN-STIC 808 -->
+    <div class="card" id="verificacion">
+      <h2><i class="fas fa-check-circle"></i> Guía CCN-STIC 808: Verificación del cumplimiento</h2>
+      <p>Métodos y criterios para demostrar que las medidas funcionan:</p>
+      <ol>
+        <li><strong>Verificación documental:</strong> PCE y acta de asunción de riesgo residual firmada por dirección.</li>
+        <li><strong>Pruebas de controles de acceso:</strong> Intentos reales sin MFA y revisión de configuraciones.</li>
+        <li><strong>Revisión de trazabilidad:</strong> Configuración del SIEM (protección, sincronización NTP, retención ≥90 días).</li>
+        <li><strong>Simulacros de incidentes:</strong> Ej. ransomware en subestación – detección ≤15 min, contención ≤60 min.</li>
+        <li><strong>Criterios cuantificables:</strong>
+          <ul>
+            <li>100% cuentas privilegiadas con MFA.</li>
+            <li>100% eventos críticos registrados.</li>
+            <li>Retención de logs ≥90 días.</li>
+          </ul>
+        </li>
+      </ol>
+      <p>Evidencias almacenadas en repositorio centralizado con MFA y hashes criptográficos.</p>
+    </div>
+
+  <footer>
+    <p>© 2025 Iberdrola, S.A. – Cumplimiento con el Esquema Nacional de Seguridad (ENS) y Directiva NIS2</p>
+    <p>Documento interno – Uso exclusivo para fines de auditoría y certificación</p>
+  </footer>
+
+  <script>
+    // Show/hide back-to-top button
+    window.addEventListener('scroll', function() {
+      const button = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        button.classList.add('show');
+      } else {
+        button.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          // Obtener altura del nav (estática en escritorio, pero manejamos ambos casos)
+          const nav = document.querySelector('nav');
+          const navHeight = nav ? nav.offsetHeight : 0;
+          const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+          const scrollTarget = offsetTop - navHeight - 10; // margen adicional de 10px
+
+          window.scrollTo({
+            top: scrollTarget,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+  <script>
+    // Solo activar en dispositivos con ratón (no en móviles/táctiles)
+    if (!('ontouchstart' in window)) {
+      const canvas = document.getElementById('light-canvas');
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      const points = [];
+      const maxPoints = 10; // Estela corta
+      let idleTimer;
+
+      // Colores que combinan con tu paleta corporativa
+      const trailColor = '#60a5fa'; // Azul claro de tu diseño (de los enlaces)
+      const glowColor = '#3b82f6';  // Azul más intenso (degradado del título)
+
+      document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Reiniciar temporizador: si no hay movimiento en 120ms, limpiar
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          points.length = 0;
+        }, 120);
+
+        points.push({ x, y });
+        if (points.length > maxPoints) points.shift();
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (points.length < 2) {
+          requestAnimationFrame(animate);
+          return;
+        }
+
+        // Dibujar estela suave
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) {
+          ctx.lineTo(points[i].x, points[i].y);
+        }
+
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, trailColor);
+        gradient.addColorStop(1, glowColor);
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = glowColor;
+        ctx.stroke();
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+  </script>
+</body>
+</html>
