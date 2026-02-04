@@ -29,19 +29,32 @@
     </a>
     
     <ul class="nav-menu">
-      
-      <!-- Sector 1: Contexto -->
+
+    <!-- Sector 1: Contexto Empresarial -->
+    <li class="nav-item">
+      <a href="javascript:void(0)" class="nav-link">
+        Contexto Empresarial <i class="fas fa-chevron-down"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="contexto_empresa.html#perfil-corporativo" class="dropdown-link">Perfil Corporativo</a></li>
+        <li><a href="contexto_empresa.html#estructura-organizativa" class="dropdown-link">Estructura Organizativa</a></li>
+        <li><a href="contexto_empresa.html#roles-ens" class="dropdown-link">Roles ENS</a></li>
+        <li><a href="contexto_empresa.html#capacitacion" class="dropdown-link">Capacitación</a></li>
+      </ul>
+    </li>
+ 
+      <!-- Sector 2: Normativa -->
       <li class="nav-item">
         <a href="javascript:void(0)" class="nav-link">
-          Contexto y Normativa <i class="fas fa-chevron-down"></i>
+          Normativa <i class="fas fa-chevron-down"></i>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="contexto_normativa.html#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
-          <li><a href="contexto_normativa.html#conducta" class="dropdown-link">Código de Conducta</a></li>
+          <li><a href="normativa.html#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
+          <li><a href="normativa.html#conducta" class="dropdown-link">Código de Conducta</a></li>
         </ul>
       </li>
 
-      <!-- Sector 2: Ciclo ENS -->
+      <!-- Sector 3: Ciclo ENS -->
       <li class="nav-item">
         <a href="javascript:void(0)" class="nav-link">
           Ciclo ENS (Guías) <i class="fas fa-chevron-down"></i>
@@ -53,7 +66,7 @@
         </ul>
       </li>
 
-      <!-- Sector 3: Riesgos -->
+      <!-- Sector 4: Riesgos -->
       <li class="nav-item">
         <a href="javascript:void(0)" class="nav-link">
           Gestión de Riesgos <i class="fas fa-chevron-down"></i>
@@ -61,14 +74,14 @@
         <ul class="dropdown-menu">
           <li><a href="gestion_riesgo.html#terceras-partes" class="dropdown-link">Terceras Partes</a></li>
           <li><a href="gestion_riesgo.html#mapa_riesgos" class="dropdown-link">Mapa de Riesgos</a></li>
+          <li><a href="gestion_riesgo.html#mapa_riesgos_io" class="dropdown-link">Mapa de Riesgos - IO</a></li>
         </ul>
       </li>
 
-      <!-- Sector 4: Anexos -->
+      <!-- Sector 5: Anexos -->
       <li class="nav-item">
         <a href="anexos.html#anexos" class="nav-link">Anexos</a>
       </li>
-
     </ul>
   </nav>
 
@@ -168,6 +181,74 @@
         </tbody>
       </table>
     </div>
+
+  <!-- MAPA DE RIESGO - IO -->
+    <div class="card" id="mapa_riesgos_io">
+      <h2><i class="fa-solid fa-map"></i> Mapa de Riesgos - IO</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Proceso</th>
+            <th>Riesgo</th>
+            <th>Probabilidad</th>
+            <th>Impacto del Riesgo</th>
+            <th>Categoría de Riesgo</th>
+            <th>Medidas Mitigadoras</th>
+          </tr>
+        </thead>
+        <tbody>
+      <tr>
+        <td>Obtención de licencias y concesiones energéticas</td>
+        <td>Corrupción en contratos públicos (sobornos, tráfico de influencias)</td>
+        <td style="text-align: center;"><span class="badge badge-medium">Media</span></td>
+        <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+        <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+        <td>Código ético, controles de integridad en relaciones con la administración, registro de interacciones, auditorías externas, formación en anticorrupción.</td>
+      </tr>
+      <tr>
+        <td>Gestión de proyectos subvencionados (renovables, eficiencia energética)</td>
+        <td>Fraude en subvenciones o ayudas públicas</td>
+        <td style="text-align: center;"><span class="badge badge-low">Baja</span></td>
+        <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+        <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+        <td>Trazabilidad documental, auditorías financieras, verificación de hitos, separación de funciones y controles internos reforzados.</td>
+      </tr>
+      <tr>
+        <td>Contratación y pagos a proveedores</td>
+        <td>Blanqueo de capitales mediante contratos ficticios o facturación falsa</td>
+        <td style="text-align: center;"><span class="badge badge-low">Baja</span></td>
+        <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+        <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+        <td>Diligencia debida (KYC/KYP), análisis de riesgos de terceros, monitorización de operaciones sospechosas, políticas AML internas.</td>
+      </tr>
+      <tr>
+        <td>Operación de plantas y redes eléctricas</td>
+        <td>Delitos medioambientales (vertidos, emisiones no autorizadas, incumplimiento de límites de CO₂)</td>
+        <td style="text-align: center;"><span class="badge badge-medium">Media</span></td>
+        <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+        <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+        <td>Sistemas de control ambiental, auditorías ISO 14001, sensores de emisiones, planes de contingencia y formación ambiental.</td>
+      </tr>
+      <tr>
+        <td>Gestión de infraestructuras críticas y datos de clientes</td>
+        <td>Ciberataques, sabotaje o robo de datos</td>
+        <td style="text-align: center;"><span class="badge badge-high">Alta</span></td>
+        <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+        <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+        <td>Segmentación IT/OT, MFA, SIEM, planes de respuesta a incidentes, pruebas de penetración, cumplimiento NIS2 y RGPD.</td>
+      </tr>
+      <tr>
+        <td>Subcontratación de mantenimiento y operaciones</td>
+        <td>Vulneración de derechos laborales (condiciones precarias, seguridad insuficiente)</td>
+        <td style="text-align: center;"><span class="badge badge-medium">Media</span></td>
+        <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+        <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+        <td>Auditorías laborales, cláusulas de cumplimiento en contratos, supervisión de ETT/subcontratas, formación en PRL y controles periódicos.</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
 
   <footer>
     <p>© 2026 Iberdrola, S.A. – Cumplimiento con el Esquema Nacional de Seguridad (ENS) y Directiva NIS2</p>

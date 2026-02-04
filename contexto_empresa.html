@@ -50,8 +50,6 @@
         <ul class="dropdown-menu">
           <li><a href="normativa.html#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
           <li><a href="normativa.html#conducta" class="dropdown-link">Código de Conducta</a></li>
-          <li><a href="gestion_riesgo.html#mapa_riesgos_io" class="dropdown-link">Mapa de Riesgos - IO</a></li>
-
         </ul>
       </li>
 
@@ -75,6 +73,7 @@
         <ul class="dropdown-menu">
           <li><a href="gestion_riesgo.html#terceras-partes" class="dropdown-link">Terceras Partes</a></li>
           <li><a href="gestion_riesgo.html#mapa_riesgos" class="dropdown-link">Mapa de Riesgos</a></li>
+          <li><a href="gestion_riesgo.html#mapa_riesgos_io" class="dropdown-link">Mapa de Riesgos - IO</a></li>
         </ul>
       </li>
 
@@ -91,134 +90,16 @@
     <i class="fas fa-arrow-up"></i>
   </a>
 
-  <header id="inicio"></header>
+  <header id="inicio"><br><br>
+      <h1><i class="fas fa-shield-alt"></i>Bienvenido a Iberdrola ENS</h1>
+    <div class="hero-image">
+      <img src="https://media.istockphoto.com/id/1969568700/es/foto/electricity-pilon.jpg?s=612x612&w=0&k=20&c=skp1xV_2nsmW98ZzqIHPP-pyzvTw7iqP_d9-0rQgJXI=" alt="Torre de alta tensión - Infraestructura energética crítica de Iberdrola">
+    </div>
+  </header>
 
   <div class="container">
-
-    <!-- Anexos -->
-    <div class="card" id="anexos">
-      <h2><i class="fa-solid fa-book"></i> Anexos</h2>
-      
-      <h3>Anexo A: Matriz RACI – Asignación de responsabilidades</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Actividad</th>
-            <th>Responsable</th>
-            <th>Aprobador</th>
-            <th>Consultado</th>
-            <th>Informado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Elaboración de la PSI</td>
-            <td>RSI</td>
-            <td>Órgano de Dirección</td>
-            <td>CSIRT, DPO</td>
-            <td>Comité de Ciberseguridad</td>
-          </tr>
-          <tr>
-            <td>Análisis y tratamiento de riesgos</td>
-            <td>RSI + Equipo de Riesgos</td>
-            <td>Órgano de Dirección</td>
-            <td>Consultora externa</td>
-            <td>CSIRT, Auditor Interno</td>
-          </tr>
-          <tr>
-            <td>Implantación de MFA</td>
-            <td>Administrador de Sistemas</td>
-            <td>RSI</td>
-            <td>Proveedor de identidad</td>
-            <td>CSIRT, Auditor Interno</td>
-          </tr>
-          <tr>
-            <td>Configuración del SIEM (≥90 días)</td>
-            <td>Administrador de Sistemas</td>
-            <td>RSI</td>
-            <td>Proveedor de SIEM</td>
-            <td>CSIRT, Auditor Interno</td>
-          </tr>
-          <tr>
-            <td>Plan de Gestión de Incidentes</td>
-            <td>CSIRT Interno</td>
-            <td>RSI</td>
-            <td>CCN-CERT</td>
-            <td>Órgano de Dirección, Proveedores críticos</td>
-          </tr>
-          <tr>
-            <td>Ejecución de simulacro</td>
-            <td>CSIRT Interno</td>
-            <td>RSI</td>
-            <td>Proveedores OT/IT</td>
-            <td>Órgano de Dirección, INCIBE-CERT</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Anexo B: Plantilla de verificación cuantitativa – Guía CCN-STIC 808</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Elemento verificado</th>
-            <th>Criterio exigido</th>
-            <th>Método de verificación</th>
-            <th>Evidencia obtenida</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>MFA en accesos privilegiados</td>
-            <td>100% con MFA activo</td>
-            <td>Revisión + prueba de acceso sin MFA</td>
-            <td>Captura con hash SHA-256</td>
-          </tr>
-          <tr>
-            <td>Cobertura de eventos críticos</td>
-            <td>100% registrados</td>
-            <td>Comparación catálogo vs SIEM</td>
-            <td>Informe de cobertura</td>
-          </tr>
-          <tr>
-            <td>Ventana de retención de logs</td>
-            <td>≥90 días</td>
-            <td>Consulta política + validación</td>
-            <td>Acta firmada</td>
-          </tr>
-          <tr>
-            <td>Simulacro de incidente</td>
-            <td>Detección ≤15 min<br>Contención ≤60 min</td>
-            <td>Ejecución controlada</td>
-            <td>Informe con cronograma</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Anexo C: Plan temporal de certificación ENS – Nivel ALTO</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">15 nov 2025</div>
-          <div><strong>Fase 1: Preparación</strong> – Aprobación del PCE por Órgano de Dirección.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">30 ene 2026</div>
-          <div><strong>Fase 2: Implementación</strong> – Cierre de brechas (MFA, logs ≥90 días).</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">10–14 mar 2026</div>
-          <div><strong>Fase 3: Auditoría</strong> – Revisión documental y pruebas técnicas por Bureau Veritas.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">15 abr 2026</div>
-          <div><strong>Fase 4: Emisión certificado</strong> – Certificado ENS con sello ENAC.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Cada 6 y 24 meses</div>
-          <div><strong>Fase 5: Mantenimiento</strong> – Auditorías semestrales y renovación bianual (próxima: abr 2028).</div>
-        </div>
-      </div>
-    </div>
-
+</div>
+ 
   <footer>
     <p>© 2026 Iberdrola, S.A. – Cumplimiento con el Esquema Nacional de Seguridad (ENS) y Directiva NIS2</p>
     <p>Documento interno – Uso exclusivo para fines de auditoría y certificación</p>
