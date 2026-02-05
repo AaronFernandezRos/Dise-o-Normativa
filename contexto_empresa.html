@@ -35,10 +35,10 @@
         Contexto Empresarial <i class="fas fa-chevron-down"></i>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="contexto_empresa.html#perfil-corporativo" class="dropdown-link">Perfil Corporativo</a></li>
+        <li><a href="contexto_empresa.html#empresa" class="dropdown-link">Perfil Corporativo</a></li>
         <li><a href="contexto_empresa.html#estructura-organizativa" class="dropdown-link">Estructura Organizativa</a></li>
-        <li><a href="contexto_empresa.html#roles-ens" class="dropdown-link">Roles ENS</a></li>
-        <li><a href="contexto_empresa.html#capacitacion" class="dropdown-link">Capacitación</a></li>
+        <li><a href="contexto_empresa.html#jerarquia-roles" class="dropdown-link">Jerarquía y Roles</a></li>
+        <li><a href="contexto_empresa.html#cualificacion" class="dropdown-link">Cualificación</a></li>
       </ul>
     </li>
  
@@ -90,21 +90,199 @@
     <i class="fas fa-arrow-up"></i>
   </a>
 
-  <header id="inicio"><br><br>
-      <h1><i class="fas fa-shield-alt"></i>Bienvenido a Iberdrola ENS</h1>
-    <div class="hero-image">
-      <img src="https://media.istockphoto.com/id/1969568700/es/foto/electricity-pilon.jpg?s=612x612&w=0&k=20&c=skp1xV_2nsmW98ZzqIHPP-pyzvTw7iqP_d9-0rQgJXI=" alt="Torre de alta tensión - Infraestructura energética crítica de Iberdrola">
-    </div>
+  <header id="inicio">
   </header>
-
   <div class="container">
+
+  <!-- Contexto Empresarial -->
+<div class="card" id="empresa">
+  <h2><i class="fas fa-building"></i> Perfil Corporativo</h2>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #cbd5e1;">
+    Iberdrola, S.A. es una multinacional española líder en el sector energético, especializada en la generación, distribución y comercialización de electricidad a partir de fuentes renovables. Opera como <strong>Entidad Esencial</strong> bajo la Directiva NIS2 (UE 2022/2555), gestionando infraestructuras críticas incluyendo <strong>sistemas SCADA, redes OT y centros de control industrial</strong>.
+  </p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2.2rem;">
+    <div style="flex: 1; min-width: 300px;">
+      <h3 style="color: #93c5fd; margin-bottom: 1rem;"><i class="fas fa-leaf"></i> Mix de Generación</h3>
+      <div style="max-width: 250px; margin: auto;">
+        <canvas id="chartMixEnergia"></canvas>
+      </div>
+    </div>
+
+    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">40K+</div>
+          <div class="stat-label">Empleados globales</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">40</div>
+          <div class="stat-label">Países operativos</div>
+        </div>
+        <div class="stat-item" style="border-top: 2px solid rgba(147, 197, 253, 0.1); grid-column: span 2; padding-top: 1rem;">
+          <div class="stat-value" style="color: #10b981;">€40B+</div>
+          <div class="stat-label">Ingresos Anuales (2024)</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<!-- Departamentos agrupados por área funcional -->
+<div class="card" id="estructura-organizativa">
+<div style="margin-bottom: 2.2rem;">
+  <h3 style="color: #93c5fd;"><i class="fas fa-layer-group"></i> Estructura organizativa (Departamentos clave)</h3>
+  <div class="dept-grid">
+    <!-- Columna 1: Infraestructura y Operación -->
+    <div class="dept-column">
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-bolt"></i></div>
+        <div class="dept-name">Operaciones</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-cogs"></i></div>
+        <div class="dept-name">Ingeniería y Proyectos</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-users"></i></div>
+        <div class="dept-name">RRHH</div>
+      </div>
+    </div>
+
+    <!-- Columna 2: Tecnología y Seguridad -->
+    <div class="dept-column">
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-microchip"></i></div>
+        <div class="dept-name">Tecnología</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="dept-name">Ciberseguridad</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-shopping-cart"></i></div>
+        <div class="dept-name">Compras / Procurement</div>
+      </div>
+    </div>
+
+    <!-- Columna 3: Legal, Regulatorio y Negocio -->
+    <div class="dept-column">
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-gavel"></i></div>
+        <div class="dept-name">Legal</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-balance-scale"></i></div>
+        <div class="dept-name">Regulación / Compliance</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-handshake"></i></div>
+        <div class="dept-name">Rel. Institucionales</div>
+      </div>
+    </div>
+
+    <!-- Columna 4: Sostenibilidad y Negocio -->
+    <div class="dept-column">
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-leaf"></i></div>
+        <div class="dept-name">Sostenibilidad</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="dept-name">Comercial / Clientes</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><i class="fas fa-coins"></i></div>
+        <div class="dept-name">Finanzas</div>
+      </div>
+    </div>
+  </div>
+</div>
+ </div>
+
+<!-- Jerarquía y roles clave (ENS Nivel ALTO) -->
+<div class="card" id="jerarquia-roles">
+<div style="margin-bottom: 2.2rem;">
+  <h3 style="color: #93c5fd;"><i class="fas fa-user-tie"></i> Jerarquía y roles clave (ENS Nivel ALTO)</h3>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 1.4rem; margin-top: 1rem;">
+
+ <!-- Nivel 1: Consejo de Administración -->
+<div class="hierarchy-level-top">
+  <i class="fas fa-landmark" style="margin-right: 0.6rem; color: #93c5fd;"></i>
+  Consejo de Administración
+</div>
+
+<!-- Nivel 2: Dirección General -->
+<div class="hierarchy-level">
+  <i class="fas fa-user-tie" style="margin-right: 0.6rem; color: #60a5fa;"></i>
+  Dirección General / CEO
+</div>
+
+<!-- Nivel 3: Comité de Dirección -->
+<div class="hierarchy-level">
+  <i class="fas fa-users-rectangle" style="margin-right: 0.6rem; color: #60a5fa;"></i>
+  Comité de Dirección (Directores de Área)
+</div>
+
+    <!-- Nivel 4: Departamentos funcionales -->
+    <div class="dept-grid-3col">
+      <div class="dept-card-inline"><i class="fas fa-cogs"></i>Operaciones</div>
+      <div class="dept-card-inline"><i class="fas fa-microchip"></i>Tecnología</div>
+      <div class="dept-card-inline"><i class="fas fa-gavel"></i>Legal</div>
+      <div class="dept-card-inline"><i class="fas fa-shield-alt"></i>Ciberseguridad</div>
+      <div class="dept-card-inline"><i class="fas fa-balance-scale"></i>Compliance</div>
+      <div class="dept-card-inline"><i class="fas fa-leaf"></i>Sostenibilidad</div>
+      <div class="dept-card-inline"><i class="fas fa-coins"></i>Finanzas</div>
+      <div class="dept-card-inline"><i class="fas fa-users"></i>RRHH</div>
+      <div class="dept-card-inline"><i class="fas fa-hard-hat"></i>Ingeniería y Proyectos</div>
+      <div class="dept-card-inline"><i class="fas fa-chart-line"></i>Comercial / Clientes</div>
+      <div class="dept-card-inline"><i class="fas fa-shopping-cart"></i>Compras / Procurement</div>
+      <div class="dept-card-inline"><i class="fas fa-handshake"></i>Rel. Institucionales</div>
+    </div>
+
+<div class="hierarchy-ens-neutral">
+  <i class="fas fa-shield-alt" style="font-size: 1.4rem; margin-bottom: 0.6rem; color: #60a5fa;"></i>
+  <div style="font-weight: 600; margin-bottom: 0.5rem;">Roles obligatorios según ENS (Nivel ALTO)</div>
+  <div style="font-size: 0.85rem; line-height: 1.5; opacity: 0.9;">
+    <strong>RSI</strong>: Responsable de Seguridad de la Información — figura legal encargada del cumplimiento del ENS.<br>
+    <strong>CSIRT</strong>: Equipo de respuesta a incidentes — gestiona ciberataques, brechas y recuperación.
+  </div>
+</div>
+
+  </div>
+</div>
+</div>
+
+ <div class="card" id="cualificacion">
+<div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+    <div style="flex: 1; min-width: 280px;">
+      <h3 style="color: #93c5fd;"><i class="fas fa-graduation-cap"></i> Cualificación técnica</h3>
+      <p>Más del <strong>65% del personal técnico</strong> posee certificaciones críticas:</p>
+      <ul class="cert-list">
+        <li>CISSP</li>
+        <li>ISO/IEC 27001 LA</li>
+        <li>NIS2 Practitioner</li>
+        <li>OT Security Specialist</li>
+      </ul>
+    </div>
+    <div style="flex: 1; min-width: 280px;">
+      <h3 style="color: #93c5fd;"><i class="fas fa-chart-bar"></i> Crecimiento Renovables (Capacidad GW)</h3>
+      <canvas id="chartCrecimiento"></canvas>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js  "></script>
+
+
  
   <footer>
     <p>© 2026 Iberdrola, S.A. – Cumplimiento con el Esquema Nacional de Seguridad (ENS) y Directiva NIS2</p>
     <p>Documento interno – Uso exclusivo para fines de auditoría y certificación</p>
   </footer>
-
+</div>
   <script>
     // Show/hide back-to-top button
     window.addEventListener('scroll', function() {
@@ -119,15 +297,17 @@
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        // Skip dropdown headers that don't have real targets
+        if (this.getAttribute('href') === '#') return;
+
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const target = document.querySelector(targetId);
         if (target) {
-          // Obtener altura del nav (estática en escritorio, pero manejamos ambos casos)
           const nav = document.querySelector('nav');
           const navHeight = nav ? nav.offsetHeight : 0;
           const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
-          const scrollTarget = offsetTop - navHeight - 10; // margen adicional de 10px
+          const scrollTarget = offsetTop - navHeight - 10;
 
           window.scrollTo({
             top: scrollTarget,
@@ -137,6 +317,57 @@
       });
     });
   </script>
+  <script>
+    // Configuración Global de Chart.js para modo oscuro
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.font.family = "'Roboto Mono', monospace";
+
+// 1. Gráfico de Mix de Energía (Doughnut)
+const ctxMix = document.getElementById('chartMixEnergia').getContext('2d');
+new Chart(ctxMix, {
+    type: 'doughnut',
+    data: {
+        labels: ['Renovable', 'Convencional'],
+        datasets: [{
+            data: [70, 30],
+            backgroundColor: ['#10b981', '#3b82f6'],
+            borderWidth: 0,
+            hoverOffset: 10
+        }]
+    },
+    options: {
+        plugins: {
+            legend: { position: 'bottom' }
+        },
+        cutout: '70%'
+    }
+});
+
+// 2. Gráfico de Barras: Crecimiento
+const ctxBar = document.getElementById('chartCrecimiento').getContext('2d');
+new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+        labels: ['2021', '2022', '2023', '2024'],
+        datasets: [{
+            label: 'Capacidad GW',
+            data: [35, 38, 42, 45],
+            backgroundColor: '#60a5fa',
+            borderRadius: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+            x: { grid: { display: false } }
+        },
+        plugins: {
+            legend: { display: false }
+        }
+    }
+});
+  </script>
+
   <script>
     // Solo activar en dispositivos con ratón (no en móviles/táctiles)
     if (!('ontouchstart' in window)) {
@@ -152,18 +383,16 @@
       resizeCanvas();
 
       const points = [];
-      const maxPoints = 10; // Estela corta
+      const maxPoints = 10;
       let idleTimer;
 
-      // Colores que combinan con tu paleta corporativa
-      const trailColor = '#60a5fa'; // Azul claro de tu diseño (de los enlaces)
-      const glowColor = '#3b82f6';  // Azul más intenso (degradado del título)
+      const trailColor = '#60a5fa';
+      const glowColor = '#3b82f6';
 
       document.addEventListener('mousemove', (e) => {
         const x = e.clientX;
         const y = e.clientY;
 
-        // Reiniciar temporizador: si no hay movimiento en 120ms, limpiar
         clearTimeout(idleTimer);
         idleTimer = setTimeout(() => {
           points.length = 0;
@@ -181,7 +410,6 @@
           return;
         }
 
-        // Dibujar estela suave
         ctx.beginPath();
         ctx.moveTo(points[0].x, points[0].y);
         for (let i = 1; i < points.length; i++) {
@@ -202,6 +430,41 @@
         requestAnimationFrame(animate);
       }
 
+      animate();
+    }
+  </script>
+  <script>
+    // Light Trail Effect
+    if (!('ontouchstart' in window)) {
+      const canvas = document.getElementById('light-canvas');
+      const ctx = canvas.getContext('2d');
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      const points = [];
+      const maxPoints = 12;
+      document.addEventListener('mousemove', (e) => {
+        points.push({ x: e.clientX, y: e.clientY });
+        if (points.length > maxPoints) points.shift();
+      });
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (points.length >= 2) {
+          ctx.beginPath();
+          ctx.moveTo(points[0].x, points[0].y);
+          for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+          ctx.strokeStyle = '#60a5fa';
+          ctx.lineWidth = 2;
+          ctx.lineCap = 'round';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#3b82f6';
+          ctx.stroke();
+        }
+        requestAnimationFrame(animate);
+      }
       animate();
     }
   </script>

@@ -1,4 +1,4 @@
-   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400&display=swap');
 
 :root {
   --primary: #0056b3;
@@ -34,10 +34,6 @@ body {
   line-height: 1.8;
   overflow-x: hidden;
   background: #0a0f1e;
-}
-
-:target {
-  scroll-margin-top: 170px;
 }
 
 /* Background video container */
@@ -97,7 +93,6 @@ body {
       gap: 8px;
       padding: 10px 0;
       cursor: pointer;
-
     }
 
     .nav-link:hover, .nav-item:hover .nav-link {
@@ -1165,5 +1160,3 @@ footer span {
   border-radius: 12px;
   color: #cbd5e1;
 }
-
-
