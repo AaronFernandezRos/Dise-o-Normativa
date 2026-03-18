@@ -1198,4 +1198,332 @@ footer span {
       line-height: 1.6;
     }
 
+       /* === Estilos específicos para la sección de Privacidad desde el Diseño === */
+        .privacy-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(0, 51, 102, 0.3);
+            border-radius: 16px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .privacy-header h2 {
+            font-size: 2.2rem;
+            color: #60a5fa;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .privacy-header p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Tabla de Descripción del Tratamiento */
+        .treatment-table-container {
+            overflow-x: auto;
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(15px);
+        }
+
+        .treatment-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .treatment-table thead {
+            background: rgba(0, 51, 102, 0.6);
+        }
+
+        .treatment-table th {
+            padding: 1.2rem 1rem;
+            text-align: left;
+            color: #bfdbfe;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(96, 165, 250, 0.4);
+            white-space: nowrap;
+        }
+
+        .treatment-table td {
+            padding: 1rem;
+            vertical-align: top;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .treatment-table tr:hover {
+            background: rgba(0, 86, 179, 0.15);
+        }
+
+        .treatment-table ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .treatment-table li {
+            margin-bottom: 0.4rem;
+            color: #94a3b8;
+        }
+
+        .table-section-title {
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        /* Estrategias de Privacidad */
+        .strategies-grid {
+            display: flex;
+            flex-wrap: wrap;        
+            justify-content: center; 
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .strategy-card {
+            flex: 1 1 450px;
+            max-width: 550px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            backdrop-filter: blur(15px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #60a5fa, #3b82f6);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(96, 165, 250, 0.4);
+        }
+
+        .strategy-card:hover::before {
+            opacity: 1;
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .strategy-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(96, 165, 250, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .strategy-card h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .strategy-type {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        
+        .card-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .type-data {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .type-process {
+            background: rgba(230, 57, 70, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .strategy-objective {
+            background: rgba(0, 51, 102, 0.3);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #60a5fa;
+        }
+
+        .strategy-objective strong {
+            color: #60a5fa;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .strategy-objective span {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .strategy-tactics {
+            margin-top: 1rem;
+        }
+
+        .strategy-tactics h4 {
+            color: #93c5fd;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .strategy-tactics ul {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+
+        .strategy-tactics li {
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .strategy-implementation {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .strategy-implementation h4 {
+            color: #60a5fa;
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .implementation-box {
+            background: rgba(96, 165, 250, 0.08);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            color: #cbd5e1;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .rgpd-reference {
+            margin-top: 1rem;
+            padding: 0.6rem 1rem;
+            background: rgba(230, 57, 70, 0.1);
+            border-radius: 6px;
+            border-left: 3px solid #e63946;
+            font-size: 0.8rem;
+            color: #f87171;
+        }
+
+        .rgpd-reference strong {
+            color: #fca5a5;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .strategies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .privacy-section {
+                padding: 2rem 1rem;
+            }
+
+            .privacy-header h2 {
+                font-size: 1.6rem;
+                flex-direction: column;
+            }
+
+            .treatment-table {
+                font-size: 0.8rem;
+            }
+
+            .treatment-table th,
+            .treatment-table td {
+                padding: 0.8rem 0.6rem;
+            }
+
+            .strategy-card {
+                padding: 1.3rem;
+            }
+        }
+
+        /* Animación de entrada */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .privacy-section > * {
+            animation: slideInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .privacy-section > *:nth-child(1) { animation-delay: 0.1s; }
+        .privacy-section > *:nth-child(2) { animation-delay: 0.2s; }
+        .privacy-section > *:nth-child(3) { animation-delay: 0.3s; }
 

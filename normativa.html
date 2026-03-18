@@ -50,6 +50,7 @@
         <ul class="dropdown-menu">
           <li><a href="normativa.html#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
           <li><a href="normativa.html#conducta" class="dropdown-link">Código de Conducta</a></li>
+          <li><a href="normativa.html#privacidad" class="dropdown-link">Privacidad del Diseño</a></li>
         </ul>
       </li>
 
@@ -135,6 +136,206 @@
         </div>
       </a>
     </div>
+    </div>
+
+      <!-- Privacidad desde el diseño -->
+    <div class="card" id="privacidad">
+      <h2><i class="fas fa-user-shield"></i> Privacidad desde el Diseño</h2>
+      <!-- 5 Estrategias de Privacidad desde el Diseño -->
+        <div class="strategies-grid">
+            <!-- Estrategia 1: Minimizar -->
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                    </div>
+                    <h3>1. Minimizar Datos</h3>
+                </div>
+                <span class="strategy-type type-data">Orientada a Datos</span>
+                
+                <div class="strategy-objective">
+                    <strong>Objetivo de Protección:</strong>
+                    <span>Desvinculación - Limitar la cantidad de datos personales tratados al mínimo necesario</span>
+                </div>
+
+                <div class="strategy-tactics">
+                    <h4><i class="fas fa-check-circle"></i> Tácticas Aplicadas:</h4>
+                    <ul>
+                        <li><strong>Seleccionar:</strong> Solo datos estrictamente necesarios para gestión de accesos OT</li>
+                        <li><strong>Excluir:</strong> Eliminar campos no esenciales de formularios de proveedores</li>
+                        <li><strong>Podar:</strong> Borrado automático de logs antiguos (>24 meses)</li>
+                        <li><strong>Eliminar:</strong> Supresión segura de datos de proveedores finalizados</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-implementation">
+                    <h4><i class="fas fa-tools"></i> Implementación en Iberdrola:</h4>
+                    <div class="implementation-box">
+                        Configurar ServiceNow GRC para recoger solo: Nombre legal, tipo de relación, criticidad, 
+                        certificaciones, POC de seguridad. Eliminar datos personales de contactos cuando no sean 
+                        necesarios para la finalidad contractual.
+                    </div>
+                </div>
+
+                <div class="rgpd-reference">
+                    <strong>RGPD Art. 5.1.c</strong> - Principio de minimización de datos
+                </div>
+            </div>
+
+            <!-- Estrategia 2: Ocultar -->
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>2. Ocultar Datos</h3>
+                </div>
+                <span class="strategy-type type-data">Orientada a Datos</span>
+                
+                <div class="strategy-objective">
+                    <strong>Objetivo de Protección:</strong>
+                    <span>Confidencialidad y Desvinculación - Proteger datos de accesos no autorizados</span>
+                </div>
+
+                <div class="strategy-tactics">
+                    <h4><i class="fas fa-check-circle"></i> Tácticas Aplicadas:</h4>
+                    <ul>
+                        <li><strong>Restringir:</strong> Control de acceso con principio "need to know"</li>
+                        <li><strong>Ofuscar:</strong> Cifrado AES-256 en reposo y TLS 1.3 en tránsito</li>
+                        <li><strong>Disociar:</strong> Separar identificadores de datos de actividad</li>
+                        <li><strong>Agregar:</strong> Informes estadísticos sin datos individuales</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-implementation">
+                    <h4><i class="fas fa-tools"></i> Implementación en Iberdrola:</h4>
+                    <div class="implementation-box">
+                        MFA obligatorio en accesos privilegiados a SCADA. Cifrado de bases de datos de 
+                        proveedores. Segmentación de red IT/OT con VLANs y DMZ para limitar exposición 
+                        de datos personales.
+                    </div>
+                </div>
+
+                <div class="rgpd-reference">
+                    <strong>RGPD Art. 32</strong> - Seguridad del tratamiento (cifrado y seudonimización)
+                </div>
+            </div>
+
+            <!-- Estrategia 3: Separar -->
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>3. Separar Contextos</h3>
+                </div>
+                <span class="strategy-type type-data">Orientada a Datos</span>
+                
+                <div class="strategy-objective">
+                    <strong>Objetivo de Protección:</strong>
+                    <span>Desvinculación - Evitar correlación de datos entre tratamientos independientes</span>
+                </div>
+
+                <div class="strategy-tactics">
+                    <h4><i class="fas fa-check-circle"></i> Tácticas Aplicadas:</h4>
+                    <ul>
+                        <li><strong>Aislar:</strong> Bases de datos independientes para HR, OT y Proveedores</li>
+                        <li><strong>Distribuir:</strong> Procesamiento local en subestaciones vs. centralizado</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-implementation">
+                    <h4><i class="fas fa-tools"></i> Implementación en Iberdrola:</h4>
+                    <div class="implementation-box">
+                        Segmentación física y lógica entre red corporativa (IT) y red industrial (OT). 
+                        Tablas de indexación borradas programadamente entre bases de datos. Arquitecturas 
+                        descentralizadas para procesamiento de datos de sensores.
+                    </div>
+                </div>
+
+                <div class="rgpd-reference">
+                    <strong>RGPD Art. 25.1</strong> - Protección de datos desde el diseño
+                </div>
+            </div>
+
+            <!-- Estrategia 4: Informar -->
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>4. Informar Transparentemente</h3>
+                </div>
+                <span class="strategy-type type-process">Orientada a Procesos</span>
+                
+                <div class="strategy-objective">
+                    <strong>Objetivo de Protección:</strong>
+                    <span>Transparencia - Garantizar que los interesados comprenden el tratamiento</span>
+                </div>
+
+                <div class="strategy-tactics">
+                    <h4><i class="fas fa-check-circle"></i> Tácticas Aplicadas:</h4>
+                    <ul>
+                        <li><strong>Facilitar:</strong> Cláusulas informativas accesibles en portal proveedores</li>
+                        <li><strong>Explicar:</strong> Lenguaje claro en políticas de privacidad (capas)</li>
+                        <li><strong>Notificar:</strong> Comunicación de brechas en ≤72 horas</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-implementation">
+                    <h4><i class="fas fa-tools"></i> Implementación en Iberdrola:</h4>
+                    <div class="implementation-box">
+                        Portal de proveedores con políticas de privacidad por capas. Iconos estandarizados 
+                        para visualización rápida. Notificación automática a AEPD y afectados en caso de 
+                        brecha de alto riesgo. Registro de actividades de tratamiento público internamente.
+                    </div>
+                </div>
+
+                <div class="rgpd-reference">
+                    <strong>RGPD Art. 13-14</strong> - Información al interesado | <strong>Art. 33-34</strong> - Notificación de brechas
+                </div>
+            </div>
+
+            <!-- Estrategia 5: Controlar -->
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>5. Controlar por el Interesado</h3>
+                </div>
+                <span class="strategy-type type-process">Orientada a Procesos</span>
+                
+                <div class="strategy-objective">
+                    <strong>Objetivo de Protección:</strong>
+                    <span>Control (Intervenability) - Permitir ejercicio de derechos ARSULIPO</span>
+                </div>
+
+                <div class="strategy-tactics">
+                    <h4><i class="fas fa-check-circle"></i> Tácticas Aplicadas:</h4>
+                    <ul>
+                        <li><strong>Consentir:</strong> Consentimiento explícito para datos sensibles</li>
+                        <li><strong>Elegir:</strong> Funcionalidad granular sin tratamiento innecesario</li>
+                        <li><strong>Actualizar:</strong> Portal de autogestión de datos personales</li>
+                        <li><strong>Retirar:</strong> Mecanismo sencillo de revocación y supresión</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-implementation">
+                    <h4><i class="fas fa-tools"></i> Implementación en Iberdrola:</h4>
+                    <div class="implementation-box">
+                        Panel de privacidad en portal de empleados y proveedores para ejercer derechos 
+                        (acceso, rectificación, supresión, portabilidad). Retirada de consentimiento 
+                        tan fácil como prestarlo. Auditorías trimestrales de efectividad de mecanismos.
+                    </div>
+                </div>
+
+                <div class="rgpd-reference">
+                    <strong>RGPD Art. 15-22</strong> - Derechos del interesado | <strong>Art. 7.3</strong> - Retirada del consentimiento
+                </div>
+            </div>
+        </div>
+    </section>
     </div>
 
   <footer>
