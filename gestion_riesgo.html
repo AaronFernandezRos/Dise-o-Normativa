@@ -77,12 +77,18 @@
           <li><a href="gestion_riesgo.html#mapa_riesgos" class="dropdown-link">Mapa de Riesgos</a></li>
           <li><a href="gestion_riesgo.html#mapa_riesgos_io" class="dropdown-link">Mapa de Riesgos - IO</a></li>
           <li><a href="gestion_riesgo.html#medidas_anticorrupcion" class="dropdown-link">Anticorrupción</a></li>
+          <li><a href="gestion_riesgo.html#factores_riesgos" class="dropdown-link">Factores de Riesgo</a></li>
         </ul>
       </li>
 
       <!-- Sector 5: Anexos -->
       <li class="nav-item">
         <a href="anexos.html#anexos" class="nav-link">Anexos</a>
+      </li>
+
+      <!-- Sector 6: Calculadora -->
+      <li class="nav-item">
+        <a href="calculadora.html#calculadora" class="nav-link">Calculadora RGPD</a>
       </li>
 
     </ul>
@@ -426,6 +432,67 @@
         <li><i class="fas fa-check-circle"></i> <strong>ISO 37001:2016</strong> - Sistemas Gestión Antisoborno</li>
         <li><i class="fas fa-check-circle"></i> <strong>Directiva 2019/1937</strong> - Protección alertadores en UE</li>
       </ul>
+</div>
+
+        <!-- Factores de Riesgo -->
+    <div class="card" id="factores_riesgos">
+      <h2><i class="fa-solid fa-map"></i>Factores de Riesgo Identificados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Factores</th>
+            <th>Descripción</th>
+            <th>Categoría RGPD</th>
+            <th>Probabilidad</th>
+            <th>Impacto</th>
+            <th>Nivel de Riesgo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Acessos Privilegiados</td>
+            <td>Credenciales comprometidas en sistemas críticos SCADA/OT</td>
+            <td style="text-align: center;"><span class="badge badge-low">Baja</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td>MFA obligatorio</td>
+          </tr>
+          <tr>
+            <td>Datos Sensibles</td>
+            <td>Tratamiento de datos de consumo y hábitos de clientes</td>
+            <td style="text-align: center;"><span class="badge badge-high">Alta</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td>Cifrado AES-256</td>
+          </tr>
+          <tr>
+            <td>Volumen de Datos</td>
+            <td>~50.000 registros diarios de logs de seguridad</td>
+            <td style="text-align: center;"><span class="badge badge-high">Alta</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-high">Alto</span></td>
+            <td>Retención 24 meses</td>
+          </tr>
+          <tr>
+            <td>Proveedores Externos</td>
+            <td>Brecha en proveedor tecnológico compromete infraestructura</td>
+            <td style="text-align: center;"><span class="badge badge-low">Baja</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td>ServiceNow GRC</td>
+          </tr>
+          <tr>
+            <td>Brecha de Seguridad</td>
+            <td>Ransomware en infraestructura crítica afecta suministro</td>
+            <td style="text-align: center;"><span class="badge badge-medium">Media</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td style="text-align: center;"><span class="badge badge-very-high">Muy alto</span></td>
+            <td>BCP + Backups 3-2-1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
 </div>
 
 

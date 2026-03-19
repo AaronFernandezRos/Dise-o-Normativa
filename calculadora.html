@@ -1,0 +1,383 @@
+<DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iberdrola - Cumplimiento ENS Nivel ALTO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Light Trail Effect Canvas -->
+  <canvas id="light-canvas"></canvas>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- Background video -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://static.videezy.com/system/resources/previews/000/049/334/original/abstract-beam-light.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Reorganized Navigation (Hierarchical) -->
+  <nav>
+    <a href="index.html" class="logo">
+      <i class="fas fa-bolt"></i>
+      Iberdrola ENS
+    </a>
+    
+    <ul class="nav-menu">
+
+    <!-- Sector 1: Contexto Empresarial -->
+    <li class="nav-item">
+      <a href="javascript:void(0)" class="nav-link">
+        Contexto Empresarial <i class="fas fa-chevron-down"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="contexto_empresa.html#empresa" class="dropdown-link">Perfil Corporativo</a></li>
+        <li><a href="contexto_empresa.html#estructura-organizativa" class="dropdown-link">Estructura Organizativa</a></li>
+        <li><a href="contexto_empresa.html#jerarquia-roles" class="dropdown-link">Jerarquía y Roles</a></li>
+        <li><a href="contexto_empresa.html#cualificacion" class="dropdown-link">Cualificación</a></li>
+      </ul>
+    </li>
+ 
+      <!-- Sector 2: Normativa -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Normativa <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="normativa.html#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
+          <li><a href="normativa.html#conducta" class="dropdown-link">Código de Conducta</a></li>
+          <li><a href="normativa.html#privacidad" class="dropdown-link">Privacidad del Diseño</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 3: Ciclo ENS -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Ciclo ENS (Guías) <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="guias_ENS.html#auditoria" class="dropdown-link">Auditoría (802)</a></li>
+          <li><a href="guias_ENS.html#implantacion" class="dropdown-link">Implantación (804)</a></li>
+          <li><a href="guias_ENS.html#verificacion" class="dropdown-link">Verificación (808)</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 4: Riesgos -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Gestión de Riesgos <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="gestion_riesgo.html#terceras-partes" class="dropdown-link">Terceras Partes</a></li>
+          <li><a href="gestion_riesgo.html#mapa_riesgos" class="dropdown-link">Mapa de Riesgos</a></li>
+          <li><a href="gestion_riesgo.html#mapa_riesgos_io" class="dropdown-link">Mapa de Riesgos - IO</a></li>
+          <li><a href="gestion_riesgo.html#medidas_anticorrupcion" class="dropdown-link">Anticorrupción</a></li>
+          <li><a href="gestion_riesgo.html#factores_riesgos" class="dropdown-link">Factores de Riesgo</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 5: Anexos -->
+      <li class="nav-item">
+        <a href="anexos.html#anexos" class="nav-link">Anexos</a>
+      </li>
+
+      <!-- Sector 6: Calculadora -->
+      <li class="nav-item">
+        <a href="calculadora.html#calculadora" class="nav-link">Calculadora RGPD</a>
+      </li>
+
+    </ul>
+  </nav>
+</head>
+  <!-- Scroll to top button -->
+  <a href="#inicio" id="back-to-top" title="Volver al inicio">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+    <div class="video-bg">
+        <div class="video-overlay"></div>
+    </div>
+
+  <header id="inicio"><br><br><br>
+      <h1>CALCULADORA MULTAS RGPD</h1>
+  </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h2><i class="fa-solid fa-file-invoice-dollar"></i> 1. Datos Base y Artículo</h2>
+            <label>Volumen de negocio anual (€):</label>
+            <input type="number" id="turnover" placeholder="Ej: 3000000000" oninput="updateRanges()">
+            
+            <label>Tipo de infracción:</label>
+            <select id="article" onchange="updateRanges()">
+                <option value="4">Art. 83.4 (Infracciones menores/procedimentales - Máx 10M€ o 2%)</option>
+                <option value="5">Art. 83.5 y 83.6 (Infracciones graves/derechos - Máx 20M€ o 4%)</option>
+            </select>
+        </div>
+
+        <div class="card">
+            <h2><i class="fa-solid fa-triangle-exclamation"></i> 2. Gravedad</h2>
+            <label>Nivel de gravedad:</label>
+            <select id="severity" onchange="updateRanges()">
+                <option value="bajo">Bajo (0% - 10%)</option>
+                <option value="medio">Medio (10% - 20%)</option>
+                <option value="alto">Alto (20% - 100%)</option>
+            </select>
+            <label>% a aplicar dentro del rango de gravedad:</label>
+            <input type="number" id="severityPct" step="0.1" value="10">
+            <div id="severityRangeInfo" class="range-info">Rango permitido: 0% a 10%</div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fa-solid fa-chart-line"></i> 3. Ajuste por Volumen</h2>
+            <p style="font-size:0.9em; color:#94a3b8; margin-bottom: 10px;">El rango se calcula automáticamente según tu volumen de negocio.</p>
+            <label>% de ajuste a aplicar:</label>
+            <input type="number" id="adjustmentPct" step="0.1" value="0.4">
+            <div id="adjustmentRangeInfo" class="range-info">Introduce un volumen de negocio primero.</div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fa-solid fa-scale-unbalanced"></i> 4. Atenuantes / Agravantes</h2>
+            <label>Variación porcentual (+ para agravante, - para atenuante):</label>
+            <input type="number" id="factors" step="0.1" value="0" placeholder="Ej: 1 para sumar 1%, -2 para restar 2%">
+        </div>
+
+        <button class="pdf-button" onclick="calculate()" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 16px;">
+            <i class="fa-solid fa-calculator"></i> Calcular Sanción Final
+        </button>
+
+        <div id="results" class="results-container card" style="margin-top: 2rem; border-color: var(--primary);">
+            <h2><i class="fa-solid fa-gavel"></i> Resultados del Cálculo</h2>
+            
+            <div class="contexto-box">
+                <div class="result-line" id="resMax">Máximo Legal Aplicable: </div>
+                <div class="result-line" id="resStep3">Importe de Partida (Gravedad): </div>
+                <div class="result-line" id="resStep4">Importe Ajustado (Volumen): </div>
+                <div class="result-line" id="resFactors">Impacto Agravantes/Atenuantes: </div>
+            </div>
+
+            <div class="contexto-box legal" style="margin-top: 1.5rem; text-align: center;">
+                <h4 style="justify-content: center; font-size: 1.4rem; margin-bottom: 0;">Sanción Final</h4>
+                <div id="resFinal" style="font-size: 2rem; font-weight: bold; color: #f87171; font-family: 'Roboto Mono', monospace; margin-top: 10px;"></div>
+            </div>
+        </div>
+    </div>
+
+  <footer>
+    <p>© 2026 Iberdrola, S.A. – Cumplimiento con el Esquema Nacional de Seguridad (ENS) y Directiva NIS2</p>
+    <p>Documento interno – Uso exclusivo para fines de auditoría y certificación</p>
+  </footer>
+
+    <script>
+         // Show/hide back-to-top button
+    window.addEventListener('scroll', function() {
+      const button = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        button.classList.add('show');
+      } else {
+        button.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          // Obtener altura del nav (estática en escritorio, pero manejamos ambos casos)
+          const nav = document.querySelector('nav');
+          const navHeight = nav ? nav.offsetHeight : 0;
+          const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+          const scrollTarget = offsetTop - navHeight - 10; // margen adicional de 10px
+
+          window.scrollTo({
+            top: scrollTarget,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+  <script>
+    // Solo activar en dispositivos con ratón (no en móviles/táctiles)
+    if (!('ontouchstart' in window)) {
+      const canvas = document.getElementById('light-canvas');
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      const points = [];
+      const maxPoints = 10; // Estela corta
+      let idleTimer;
+
+      // Colores que combinan con tu paleta corporativa
+      const trailColor = '#60a5fa'; // Azul claro de tu diseño (de los enlaces)
+      const glowColor = '#3b82f6';  // Azul más intenso (degradado del título)
+
+      document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Reiniciar temporizador: si no hay movimiento en 120ms, limpiar
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          points.length = 0;
+        }, 120);
+
+        points.push({ x, y });
+        if (points.length > maxPoints) points.shift();
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (points.length < 2) {
+          requestAnimationFrame(animate);
+          return;
+        }
+
+        // Dibujar estela suave
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) {
+          ctx.lineTo(points[i].x, points[i].y);
+        }
+
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, trailColor);
+        gradient.addColorStop(1, glowColor);
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = glowColor;
+        ctx.stroke();
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+        // Configuración de rangos según la UT4
+        function getAdjustmentRange(turnover) {
+            if (turnover <= 2000000) return {min: 0.2, max: 0.4};
+            if (turnover <= 10000000) return {min: 0.3, max: 2.0};
+            if (turnover <= 50000000) return {min: 1.5, max: 10.0};
+            if (turnover <= 100000000) return {min: 8.0, max: 20.0};
+            if (turnover <= 250000000) return {min: 15.0, max: 50.0};
+            if (turnover <= 500000000) return {min: 40.0, max: 100.0};
+            return {min: 100.0, max: 100.0}; // > 500 millones, no hay ajuste (100%)
+        }
+
+        function getSeverityRange(severity) {
+            if (severity === 'bajo') return {min: 0, max: 10};
+            if (severity === 'medio') return {min: 10, max: 20};
+            if (severity === 'alto') return {min: 20, max: 100};
+        }
+
+        // Actualiza los textos de ayuda para guiar al usuario
+        function updateRanges() {
+            const turnover = parseFloat(document.getElementById('turnover').value) || 0;
+            const severity = document.getElementById('severity').value;
+            
+            // Update Severity Range
+            const sevRange = getSeverityRange(severity);
+            document.getElementById('severityRangeInfo').innerText = `Rango permitido: ${sevRange.min}% a ${sevRange.max}%`;
+            
+            // Update Adjustment Range
+            const adjRange = getAdjustmentRange(turnover);
+            if (turnover > 500000000) {
+                document.getElementById('adjustmentRangeInfo').innerText = `>500 millones: Sin ajuste (se aplicará el 100% por defecto).`;
+                document.getElementById('adjustmentPct').value = 100;
+            } else {
+                document.getElementById('adjustmentRangeInfo').innerText = `Rango permitido para ${turnover.toLocaleString('es-ES')}€: ${adjRange.min}% a ${adjRange.max}%`;
+            }
+        }
+
+        function formatEur(num) {
+            return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(num);
+        }
+
+        // Lógica principal de cálculo
+        function calculate() {
+            const turnover = parseFloat(document.getElementById('turnover').value);
+            if (isNaN(turnover) || turnover < 0) {
+                alert("Introduce un volumen de negocio válido.");
+                return;
+            }
+
+            // 1. & 2. Determinar el Máximo Legal (Estático vs Dinámico)
+            const article = document.getElementById('article').value;
+            const staticMax = article === "4" ? 10000000 : 20000000;
+            const dynPct = article === "4" ? 0.02 : 0.04;
+            const dynamicMax = turnover * dynPct;
+            const maxLimit = Math.max(staticMax, dynamicMax);
+
+            // 3. Gravedad
+            let sevPct = parseFloat(document.getElementById('severityPct').value);
+            const sevRange = getSeverityRange(document.getElementById('severity').value);
+            
+            if(sevPct < sevRange.min || sevPct > sevRange.max) {
+                alert(`El porcentaje de gravedad (${sevPct}%) está fuera del rango permitido (${sevRange.min}% - ${sevRange.max}%).`);
+                return;
+            }
+            const startingPoint = maxLimit * (sevPct / 100);
+
+            // 4. Ajustes por volumen
+            let adjPct = parseFloat(document.getElementById('adjustmentPct').value);
+            const adjRange = getAdjustmentRange(turnover);
+            if(adjPct < adjRange.min || adjPct > adjRange.max) {
+                alert(`El porcentaje de ajuste (${adjPct}%) está fuera del rango permitido (${adjRange.min}% - ${adjRange.max}%).`);
+                return;
+            }
+            const adjustedAmount = startingPoint * (adjPct / 100);
+
+            // 5. Agravantes / Atenuantes
+            const factorPct = parseFloat(document.getElementById('factors').value) || 0;
+            let finalAmount = adjustedAmount * (1 + (factorPct / 100));
+
+            // 6. Verificación de no superar el máximo (Regla de oro)
+            let capped = false;
+            if (finalAmount > maxLimit) {
+                finalAmount = maxLimit;
+                capped = true;
+            }
+
+            // Mostrar resultados en pantalla
+            document.getElementById('resMax').innerHTML = `<strong>Máximo Legal Aplicable:</strong> <span style="color:#60a5fa">${formatEur(maxLimit)}</span> <span style="font-size:0.8em; color:#94a3b8;">(${dynamicMax > staticMax ? 'Dinámico' : 'Estático'})</span>`;
+            document.getElementById('resStep3').innerHTML = `<strong>Punto de Partida (Gravedad ${sevPct}%):</strong> <span style="color:#cbd5e1">${formatEur(startingPoint)}</span>`;
+            document.getElementById('resStep4').innerHTML = `<strong>Tras Ajuste por Volumen (${adjPct}%):</strong> <span style="color:#cbd5e1">${formatEur(adjustedAmount)}</span>`;
+            document.getElementById('resFactors').innerHTML = `<strong>Con Agravantes/Atenuantes (${factorPct > 0 ? '+' : ''}${factorPct}%):</strong> <span style="color:#cbd5e1">${formatEur(adjustedAmount * (1 + (factorPct / 100)))}</span>`;
+            
+            let finalStr = `${formatEur(finalAmount)}`;
+            if(capped) {
+                finalStr += ` <br><span style="font-size:0.5em; color:#e2e8f0; display:block; margin-top:5px; font-family: 'Montserrat', sans-serif;">(Limitado al máximo legal)</span>`;
+            }
+            document.getElementById('resFinal').innerHTML = finalStr;
+
+            // Mostrar el contenedor con animación
+            document.getElementById('results').style.display = 'block';
+            
+            // Hacer scroll suave hasta los resultados
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Inicializar textos al cargar
+        updateRanges();
+    </script>
+</body>
+</html>
