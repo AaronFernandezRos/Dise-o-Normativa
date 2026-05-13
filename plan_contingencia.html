@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iberdrola ENS - Plan de Continuidad de Negocio</title>
+  <link rel="icon" href="logo_iberdrola.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <!-- Light Trail Effect Canvas -->
+  <canvas id="light-canvas"></canvas>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+    <!-- Background video -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://static.videezy.com/system/resources/previews/000/049/334/original/abstract-beam-light.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <canvas id="light-canvas"></canvas>
+
+  <!-- Reorganized Navigation (Hierarchical) -->
+  <nav>
+    <a href="index.html" class="logo">
+      <i class="fas fa-bolt"></i>
+      Iberdrola ENS
+    </a>
+    
+    <ul class="nav-menu">
+
+    <!-- Sector 1: Contexto Empresarial -->
+    <li class="nav-item">
+      <a href="javascript:void(0)" class="nav-link">
+        Contexto Empresarial <i class="fas fa-chevron-down"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="contexto_empresa.html#empresa" class="dropdown-link">Perfil Corporativo</a></li>
+        <li><a href="contexto_empresa.html#estructura-organizativa" class="dropdown-link">Estructura Organizativa</a></li>
+        <li><a href="contexto_empresa.html#jerarquia-roles" class="dropdown-link">Jerarquía y Roles</a></li>
+        <li><a href="contexto_empresa.html#cualificacion" class="dropdown-link">Cualificación</a></li>
+      </ul>
+    </li>
+ 
+      <!-- Sector 2: Normativa -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Normativa <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="normativa.html#entorno_regulatorio" class="dropdown-link">Entorno Regulatorio</a></li>
+          <li><a href="normativa.html#conducta" class="dropdown-link">Código de Conducta</a></li>
+          <li><a href="normativa.html#privacidad" class="dropdown-link">Privacidad del Diseño</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 3: Ciclo ENS -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Ciclo ENS (Guías) <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="guias_ENS.html#auditoria" class="dropdown-link">Auditoría (802)</a></li>
+          <li><a href="guias_ENS.html#implantacion" class="dropdown-link">Implantación (804)</a></li>
+          <li><a href="guias_ENS.html#verificacion" class="dropdown-link">Verificación (808)</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 4: Riesgos -->
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          Gestión de Riesgos <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="gestion_riesgo.html#terceras-partes" class="dropdown-link">Terceras Partes</a></li>
+          <li><a href="gestion_riesgo.html#mapa_riesgos" class="dropdown-link">Mapa de Riesgos</a></li>
+          <li><a href="gestion_riesgo.html#mapa_riesgos_io" class="dropdown-link">Mapa de Riesgos - IO</a></li>
+          <li><a href="gestion_riesgo.html#medidas_anticorrupcion" class="dropdown-link">Anticorrupción</a></li>
+          <li><a href="gestion_riesgo.html#factores_riesgos" class="dropdown-link">Factores de Riesgo</a></li>
+        </ul>
+      </li>
+
+      <!-- Sector 5: Plan de Contingencia -->
+      <li class="nav-item">
+        <a href="plan_contingencia.html#plan-contingencia" class="nav-link">Plan Contingencia</a>
+      </li>
+
+      <!-- Sector 6: Anexos -->
+      <li class="nav-item">
+        <a href="anexos.html#anexos" class="nav-link">Anexos</a>
+      </li>
+
+      <!-- Sector 7: Calculadora -->
+      <li class="nav-item">
+        <a href="calculadora.html#calculadora" class="nav-link">Calculadora RGPD</a>
+      </li>
+    </ul>
+  </nav>
+
+   <!-- Scroll to top button -->
+  <a href="#inicio" id="back-to-top" title="Volver al inicio"><i class="fas fa-arrow-up"></i></a>
+
+  <header id="inicio"><br><br><br>
+    <h1><i class="fas fa-server"></i> Plan de Continuidad y Recuperación</h1>
+    <p>Protocolos de contingencia ante desastres para infraestructuras críticas (Nivel ALTO)</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card" id="categorizacion">
+      <h2><i class="fas fa-hdd"></i> Categorización del Activo Crítico</h2>
+      <div class="intro-text">
+        Análisis de contingencia para el <strong>Servidor Físico de Copias de Seguridad (Appliance de Backup)</strong> ubicado en el Centro de Proceso de Datos (CPD) de Iberdrola.
+      </div>
+      
+      <div class="contexto-box legal">
+        <h4><i class="fas fa-exclamation-triangle"></i> Criticidad del Activo</h4>
+        <p>En una infraestructura esencial como la de Iberdrola, la pérdida del servidor principal de backups incapacita a la organización para recuperarse ante incidentes mayores (como una infección por ransomware o un desastre físico). Sin este activo, los entornos OT (tecnología de operaciones) y bases de datos quedarían irremediablemente expuestos.</p>
+      </div>
+    </div>
+
+    <div class="card" id="drdc">
+      <h2><i class="fas fa-building-shield"></i> Disaster Recovery Data Center (DRDC)</h2>
+      <p>Un <strong>Disaster Recovery Data Center (DRDC)</strong> es una infraestructura tecnológica diseñada para garantizar la continuidad de negocio en caso de que el centro de datos principal falle por un incidente grave. Actúa como una ubicación alternativa, ya sea física o virtual, donde se replican de forma segura los sistemas críticos, las aplicaciones y los datos de la organización. El objetivo fundamental es minimizar el tiempo de inactividad y evitar la pérdida de información vital.</p>
+      
+      <h3 style="margin-top: 2rem; margin-bottom: 1rem;"><i class="fas fa-list-check"></i> Características de un Plan de Recuperación (DRP) para Data Center</h3>
+      <p>Para que la infraestructura de respaldo sea plenamente efectiva, el plan debe integrar las siguientes características clave:</p>
+      
+      <div class="dept-grid">
+        <div class="dept-card">
+          <i class="fas fa-server dept-icon"></i>
+          <div class="dept-name">Alta Disponibilidad<br><small style="font-weight:normal; color:#94a3b8">Infraestructura redundante y replicación de datos en tiempo real.</small></div>
+        </div>
+        <div class="dept-card">
+          <i class="fas fa-robot dept-icon"></i>
+          <div class="dept-name">Automatización<br><small style="font-weight:normal; color:#94a3b8">Ejecución orquestada de tareas críticas para evitar errores.</small></div>
+        </div>
+        <div class="dept-card">
+          <i class="fas fa-shield-halved dept-icon"></i>
+          <div class="dept-name">Seguridad Total<br><small style="font-weight:normal; color:#94a3b8">Cifrado de datos en reposo/tránsito y cumplimiento ENS.</small></div>
+        </div>
+        <div class="dept-card">
+          <i class="fas fa-vial-circle-check dept-icon"></i>
+          <div class="dept-name">Simulaciones<br><small style="font-weight:normal; color:#94a3b8">Pruebas y simulacros periódicos para validar el DRP.</small></div>
+        </div>
+      </div>
+
+      <div class="contexto-box" style="margin-top: 1.5rem;">
+        <h4><i class="fas fa-radiation"></i> Alcance de Mitigación de Desastres</h4>
+        <p>Este ecosistema de recuperación protege al Data Center frente a un amplio espectro de eventos: desastres naturales (incendios, inundaciones, tormentas), fallos críticos de hardware/software, ciberataques organizados (Ransomware, ataques DDoS) y errores humanos involuntarios que puedan comprometer la infraestructura.</p>
+      </div>
+    </div>
+
+    <div class="card" id="rto-rpo">
+      <h2><i class="fas fa-stopwatch"></i> Métricas de Recuperación Objetivo (RTO y RPO)</h2>
+      <p>Para asegurar la resiliencia del servicio eléctrico y la gestión corporativa, se establecen las siguientes métricas inamovibles para el repositorio de copias, alineadas con los requisitos del ENS (Nivel ALTO) y la Directiva NIS2:</p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">12 Horas</div>
+          <div class="stat-label"><strong>RPO</strong> (Recovery Point Objective)<br><small>Tolerancia máxima de pérdida de datos. Sincronización a repositorio inmutable.</small></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">4 Horas</div>
+          <div class="stat-label"><strong>RTO</strong> (Recovery Time Objective)<br><small>Tiempo máximo para restaurar y tener operativo el servidor de contingencia.</small></div>
+        </div>
+      </div>
+
+      <div class="contexto-box" style="margin-top: 1.5rem;">
+        <h4><i class="fas fa-balance-scale"></i> Justificación Normativa y Operativa</h4>
+        <p style="margin-bottom: 0.8rem;">
+          <strong>Justificación del RPO (12 Horas):</strong> En un entorno de infraestructura crítica, establecer un RPO de 12 horas para el catálogo de respaldos garantiza la consolidación segura de los estados operativos de los sistemas SCADA y las bases de datos transaccionales al final de cada ciclo de turno principal (mañana y noche). Esto limita la exposición de pérdida de registros de telemetría y facturación a un máximo de medio día, logrando un equilibrio técnico entre el consumo de ancho de banda de la red de almacenamiento (SAN) y el límite de tolerancia aceptado en el Análisis de Riesgos.
+        </p>
+        <p>
+          <strong>Justificación del RTO (4 Horas):</strong> El RTO de 4 horas es el umbral máximo exigido para iniciar la fase de reconstitución ante un incidente severo de ciberseguridad (ej. propagación de Ransomware). Dado que el servidor de copias es la <em>herramienta principal</em> para recuperar los sistemas de producción, este debe estar completamente online y verificado antes de que inicie la siguiente ventana de copias programada. Superar este tiempo en un entorno Nivel ALTO supondría una exposición en cadena y un incumplimiento de los Acuerdos de Nivel de Servicio (SLA), retrasando inaceptablemente la recuperación operativa de la red de distribución eléctrica.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" id="bia">
+      <h2><i class="fas fa-chart-line"></i> Evaluación de Impacto (BIA)</h2>
+      <p>Metodología de evaluación: <strong>Riesgo = Valor activo * Probabilidad * Consecuencia</strong> (Escala 1-5).</p>
+      
+      <div style="margin-bottom: 1rem;">
+        <strong>Valor Asignado al Activo:</strong> <span class="badge badge-very-high">5 - Crítico</span>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Situación / Amenaza</th>
+              <th>Probabilidad</th>
+              <th>Consecuencia</th>
+              <th>Nivel de Riesgo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fas fa-fire" style="color: #f87171; width: 20px;"></i> Fuego en el CPD principal</td>
+              <td>1</td>
+              <td>5</td>
+              <td><span class="badge badge-medium">25</span></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-water" style="color: #60a5fa; width: 20px;"></i> Daño por inundación severa</td>
+              <td>2</td>
+              <td>5</td>
+              <td><span class="badge badge-high">50</span></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-bug" style="color: #a78bfa; width: 20px;"></i> Ataque Ransomware / Cifrado</td>
+              <td>4</td>
+              <td>5</td>
+              <td><span class="badge badge-very-high">100</span></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-microchip" style="color: #94a3b8; width: 20px;"></i> Fallo severo de Hardware (Corrupción RAID)</td>
+              <td>3</td>
+              <td>4</td>
+              <td><span class="badge badge-high">60</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" id="plan-recuperacion">
+      <h2><i class="fas fa-route"></i> Plan de Recuperación de Entorno</h2>
+      <p>Protocolo a ejecutar en caso de disrupción o caída total del servidor de copias de seguridad.</p>
+      
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Paso</th>
+              <th>Tiempo (T)</th>
+              <th>Acción a realizar</th>
+              <th>Información, recursos y comentarios</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1</strong></td>
+              <td>0m</td>
+              <td>Identificar la caída del servidor principal y aislarlo de la red corporativa.</td>
+              <td>Revisar alertas del SIEM. Aislar a nivel de red (VLAN) para prevenir movimiento lateral si es ciberataque.</td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td>25m</td>
+              <td>Desplegar y arrancar el servidor de contingencia física (nodo Standby).</td>
+              <td>Ver procedimiento de encendido seguro. El equipo cuenta con la misma versión base de Windows Server.</td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td>50m</td>
+              <td>Mapear y montar las LUNs del almacenamiento secundario (repositorio inmutable/offline).</td>
+              <td>Configurar el volumen de copias en modo <em>Solo Lectura</em> momentáneamente para evitar corrupción.</td>
+            </tr>
+            <tr>
+              <td><strong>4</strong></td>
+              <td>120m</td>
+              <td>Reconstruir el catálogo de copias y validar la accesibilidad a los datos.</td>
+              <td>Ejecutar procedimiento técnico (WSB). Tras validar, notificar a Operaciones el restablecimiento.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" id="procedimiento-tecnico">
+      <h2><i class="fas fa-terminal"></i> Procedimiento Técnico de Restauración (WSB)</h2>
+      <p>Instrucciones operativas a ejecutar en la consola de <strong>PowerShell (Administrador)</strong> del nodo de contingencia (Windows Server 2022).</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Fase 1: Identificación del catálogo</div>
+          <p>Consultar el repositorio conectado (ej. disco E:) para obtener el identificador de la versión más reciente.</p>
+          <div style="background: #0f172a; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-family: 'Roboto Mono', monospace; color: #a78bfa; margin-top: 10px;">
+            wbadmin get versions -backupTarget:E: -machine:SRV-BKP-ENDESA
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Fase 2: Verificación de integridad</div>
+          <p>Asegurarse de que el "System State" y los volúmenes están íntegros en esa instantánea.</p>
+          <div style="background: #0f172a; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-family: 'Roboto Mono', monospace; color: #a78bfa; margin-top: 10px;">
+            wbadmin get items -version:10/24/2026-02:00 -backupTarget:E: -machine:SRV-BKP-ENDESA
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Fase 3: Restauración del Estado del Sistema (System State)</div>
+          <p>Restaurar únicamente el estado del sistema directamente desde PowerShell activo. El parámetro <code>-quiet</code> acelera el RTO al omitir confirmaciones por consola.</p>
+          <div style="background: #0f172a; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-family: 'Roboto Mono', monospace; color: #a78bfa; margin-top: 10px;">
+            wbadmin start systemstaterecovery -version:10/24/2026-02:00 -backupTarget:E: -machine:SRV-BKP-ENDESA -quiet
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Fase 4: Validación en Visor de Eventos</div>
+          <p>Tras finalizar y reiniciar, comprobar que el servicio WSB se ha iniciado de manera limpia antes de pasar a producción.</p>
+          <div style="background: #0f172a; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-family: 'Roboto Mono', monospace; color: #a78bfa; margin-top: 10px;">
+            Get-EventLog -LogName Application -Source Microsoft-Windows-Backup -Newest 15
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <footer>
+    <p>© 2026 Iberdrola, S.A. – Cumplimiento con el Esquema Nacional de Seguridad (ENS) y Directiva NIS2</p>
+    <p>Documento interno – Uso exclusivo para fines de auditoría y certificación</p>
+    <p style="margin-top: 15px; font-size: 0.8rem;"><strong>Referencias:</strong></p>
+    <p style="font-size: 0.8rem;">[1] Data Center Market: Qué es un Disaster Recovery para data center. Cómo crearlo (https://www.datacentermarket.es/business-continuity/que-es-un-disaster-recovery-para-data-center-como-crearlo/)</p>
+  </footer>
+
+  <script>
+    // Show/hide back-to-top button
+    window.addEventListener('scroll', function() {
+      const button = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        button.classList.add('show');
+      } else {
+        button.classList.remove('show');
+      }
+    });
+
+    // Efecto de partículas de luz (Cursor)
+    if (!('ontouchstart' in window)) {
+      const canvas = document.getElementById('light-canvas');
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      const points = [];
+      const maxPoints = 10;
+      let idleTimer;
+      const trailColor = '#60a5fa';
+      const glowColor = '#3b82f6';
+
+      document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => { points.length = 0; }, 120);
+        points.push({ x, y });
+        if (points.length > maxPoints) points.shift();
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (points.length < 2) {
+          requestAnimationFrame(animate);
+          return;
+        }
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) {
+          ctx.lineTo(points[i].x, points[i].y);
+        }
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, trailColor);
+        gradient.addColorStop(1, glowColor);
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = glowColor;
+        ctx.stroke();
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+  </script>
+</body>
+</html>
